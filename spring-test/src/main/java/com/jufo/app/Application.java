@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableAutoConfiguration
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan(value= {"com.jufo.*"})
 @MapperScan(basePackages= {"com.jufo.mappers"})
 @EnableConfigurationProperties
+@EnableScheduling
 //@SpringBootApplication
 public class Application {
 
