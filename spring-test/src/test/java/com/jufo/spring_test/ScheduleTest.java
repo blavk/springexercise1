@@ -35,6 +35,7 @@ public class ScheduleTest {
 	@Test
 	public void test1() throws SchedulerException, ParseException, InterruptedException {
 		Scheduler scheduler = schedulerFactoryBean.getScheduler();
+		jobDetailFactoryBean.setDurability(false);
 		JobDetail jobDetail = jobDetailFactoryBean.getObject();
 		jobDetail.getJobDataMap().put("jobid", 1);
 		CronTriggerFactoryBean cronTriggerFactoryBean = new CronTriggerFactoryBean();

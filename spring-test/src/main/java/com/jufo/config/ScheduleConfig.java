@@ -12,6 +12,10 @@ import org.springframework.boot.autoconfigure.quartz.QuartzDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.DefaultResourceLoader;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.scheduling.quartz.JobDetailFactoryBean;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
@@ -38,6 +42,8 @@ public class ScheduleConfig {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+//		DefaultResourceLoader loader = new DefaultResourceLoader();
+//		schedulerFactoryBean.setConfigLocation(loader.getResource("classpath:quartz.properties"));
 		schedulerFactoryBean.setQuartzProperties(properties);
 		schedulerFactoryBean.setStartupDelay(2);
 		schedulerFactoryBean.setOverwriteExistingJobs(true);

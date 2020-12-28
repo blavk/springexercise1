@@ -9,12 +9,15 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
+
 @EnableAutoConfiguration
 @EnableTransactionManagement
 @ComponentScan(value= {"com.jufo.*"})
 @MapperScan(basePackages= {"com.jufo.mappers"})
 @EnableConfigurationProperties
 @EnableScheduling
+@EnableEncryptableProperties
 //@SpringBootApplication
 public class Application {
 
