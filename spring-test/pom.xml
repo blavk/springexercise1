@@ -32,10 +32,18 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-context-support</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
 		
 
@@ -69,12 +77,54 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>4.3.10.RELEASE</version>
 		</dependency>
+		
+		<!-- webservice -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>
+		
+		<dependency>
+	      <groupId>org.apache.cxf</groupId>
+	      <artifactId>cxf-rt-frontend-jaxws</artifactId>
+	      <version>3.1.6</version>
+	    </dependency>
+	
+	    <dependency>
+	      <groupId>org.apache.cxf</groupId>
+	      <artifactId>cxf-core</artifactId>
+	      <version>3.1.6</version>
+	    </dependency>
+	
+	    <dependency>
+	      <groupId>org.apache.cxf</groupId>
+	      <artifactId>cxf-rt-transports-http</artifactId>
+	      <version>3.1.6</version>
+	    </dependency>
+	    
+		<dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-rt-ws-security</artifactId>
+		    <version>3.1.6</version>
+		</dependency>
+		
+		 <dependency>
+            <groupId>wsdl4j</groupId>
+            <artifactId>wsdl4j</artifactId>
+        </dependency>
+ 
+        <dependency>
+            <groupId>org.springframework.ws</groupId>
+            <artifactId>spring-ws-core</artifactId>
+        </dependency>
+		
+			    
 
 		<!-- db -->
 		<dependency>
@@ -144,15 +194,38 @@
 			<artifactId>curator-recipes</artifactId>
 			<version>5.1.0</version>
 		</dependency>
+		
 	</dependencies>
 
 	<!-- Package as an executable jar -->
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <!-- <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>2.5.0</version>
+                <executions>
+                    <execution>
+                        <id>xjc</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                <sources>
+                    <source>${project.basedir}/src/main/resources/xsd/countries.xsd</source>
+                </sources>
+                </configuration>
+            </plugin> -->
+            
+
+			
 		</plugins>
 	</build>
 </project>

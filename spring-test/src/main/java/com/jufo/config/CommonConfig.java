@@ -1,7 +1,6 @@
 package com.jufo.config;
 
 import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
@@ -9,17 +8,22 @@ import org.apache.tomcat.util.threads.ThreadPoolExecutor;
 import org.jasypt.encryption.StringEncryptor;
 import org.jasypt.encryption.pbe.PooledPBEStringEncryptor;
 import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
-import org.jasypt.salt.RandomSaltGenerator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.event.EventListener;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 
 @Configuration
 public class CommonConfig {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(CommonConfig.class);
 	
 	@Bean
 	@Primary
@@ -48,6 +52,11 @@ public class CommonConfig {
 //		Executors.newFixedThreadPool(2);
 		ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10, 10, 0, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>(), new ThreadPoolExecutor.AbortPolicy());
 		return threadPoolExecutor;
+	}
+	
+	@EventListener(ApplicationReadyEvent.class)
+	public void name() {
+		LOG.info("start success!");
 	}
 
 }
